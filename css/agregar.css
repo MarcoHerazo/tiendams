@@ -1,0 +1,526 @@
+:root {
+    --primary: #0f172a;
+    --primary-light: #334155;
+    --accent: #ff6b35;
+    --accent-light: #ff8c5a;
+    --accent-dark: #e55a2b;
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.05);
+    --shadow-lg: 0 15px 25px -8px rgba(0,0,0,0.1);
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 999px;
+    --transition: all 0.2s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* ===== CONTROL DE VISTAS ===== */
+.desktop-view {
+    display: block;
+}
+
+.mobile-view {
+    display: none;
+}
+
+/* ===== ACTIVAR/DESACTIVAR VISTAS ===== */
+@media (min-width: 769px) {
+    .desktop-view {
+        display: block;
+    }
+    .mobile-view {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-view {
+        display: none;
+    }
+    .mobile-view {
+        display: block;
+    }
+}
+
+/* ===== MENSAJES COMPARTIDOS ===== */
+.success-message,
+.error-message,
+.mobile-success,
+.mobile-error {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid;
+}
+
+.success-message,
+.mobile-success {
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    border-color: #27ae60;
+}
+
+.error-message,
+.mobile-error {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+/* ===== ESTILOS DESKTOP ===== */
+.desktop-view .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.desktop-view .sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    padding: 30px 0;
+    overflow-y: auto;
+}
+
+.desktop-view .logo {
+    padding: 0 20px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.desktop-view .logo h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.desktop-view .nav-item {
+    display: block;
+    padding: 15px 20px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.3s;
+    margin: 5px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.desktop-view .nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transform: translateX(5px);
+}
+
+.desktop-view .nav-item.active {
+    background: #ff6b35;
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(255,107,53,0.3);
+}
+
+.desktop-view .nav-item.logout {
+    margin-top: 40px;
+    color: #ff8a8a;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0;
+}
+
+.desktop-view .main-content {
+    margin-left: 280px;
+    padding: 40px;
+    width: calc(100% - 280px);
+}
+
+.desktop-view .header {
+    margin-bottom: 30px;
+}
+
+.desktop-view .header h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.desktop-view .product-form {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-lg);
+}
+
+.desktop-view .form-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.desktop-view .form-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.desktop-view .form-group {
+    margin-bottom: 20px;
+}
+
+.desktop-view .form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.desktop-view .form-group.half {
+    flex: 1;
+}
+
+.desktop-view label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.desktop-view input,
+.desktop-view select,
+.desktop-view textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.desktop-view input:focus,
+.desktop-view select:focus,
+.desktop-view textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.desktop-view .help-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.desktop-view .variante-item {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+}
+
+.desktop-view .variante-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: center;
+}
+
+.desktop-view .remove-variante {
+    background: var(--danger);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.desktop-view .add-variante-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.desktop-view .form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.desktop-view .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.desktop-view .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255,107,53,0.3);
+}
+
+.desktop-view .btn-secondary {
+    background: var(--border);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* ===== ESTILOS MOBILE ===== */
+.mobile-view {
+    background: var(--bg);
+    min-height: 100vh;
+}
+
+.mobile-view .mobile-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.mobile-view .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 20px;
+}
+
+.mobile-view .menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dark);
+    width: 40px;
+    height: 40px;
+}
+
+.mobile-view .mobile-logo h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.mobile-view .mobile-logout {
+    color: var(--danger);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.mobile-view .mobile-side-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-view .mobile-side-menu.show {
+    left: 0;
+}
+
+.mobile-view .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.mobile-view .mobile-menu-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.mobile-view .mobile-close-menu {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.mobile-view .mobile-menu-content {
+    padding: 16px;
+}
+
+.mobile-view .mobile-menu-item {
+    display: block;
+    padding: 14px 16px;
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 12px;
+    margin-bottom: 2px;
+}
+
+.mobile-view .mobile-menu-item.active {
+    background: var(--accent);
+    color: white;
+}
+
+.mobile-view .mobile-menu-item.logout {
+    color: var(--danger);
+    margin-top: 20px;
+}
+
+.mobile-view .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+
+.mobile-view .mobile-overlay.show {
+    display: block;
+}
+
+.mobile-view .mobile-content h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.mobile-view .mobile-form-section {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.mobile-view .mobile-form-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.mobile-view .mobile-form-group {
+    margin-bottom: 15px;
+}
+
+.mobile-view .mobile-form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.mobile-view .mobile-form-group input,
+.mobile-view .mobile-form-group select,
+.mobile-view .mobile-form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.mobile-view .mobile-add-btn {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mobile-view .mobile-variante-item {
+    background: var(--bg);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.mobile-view .mobile-variante-item select,
+.mobile-view .mobile-variante-item input {
+    margin-bottom: 10px;
+}
+
+.mobile-view .mobile-variante-item button {
+    width: 100%;
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mobile-view .mobile-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.mobile-view .mobile-btn-primary {
+    flex: 2;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mobile-view .mobile-btn-secondary {
+    flex: 1;
+    background: var(--border);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}

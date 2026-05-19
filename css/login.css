@@ -1,0 +1,340 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-hover: #34495e;
+    --secondary-color: #7f8c8d;
+    --error-color: #e74c3c;
+    --success-color: #27ae60;
+    --background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 50%, #34495e 100%);
+    --card-bg: #2c3e50;
+    --text-primary: #ecf0f1;
+    --text-secondary: #bdc3c7;
+    --border-color: #7f8c8d;
+    --shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 25px 45px rgba(0, 0, 0, 0.7);
+    --metallic-gradient: linear-gradient(145deg, #2c3e50, #34495e, #2c3e50);
+    --metallic-border: linear-gradient(145deg, #7f8c8d, #95a5a6, #7f8c8d);
+    --input-bg: rgba(52, 73, 94, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo metálico en el fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+    animation: metallicShine 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes metallicShine {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.login-container {
+    background: var(--card-bg);
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: slideUp 0.5s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Efecto de brillo metálico en el contenedor */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: metallicRotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes metallicRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.login-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-container h2 {
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ecf0f1, #bdc3c7, #ecf0f1, transparent);
+    border-radius: 2px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-container input:focus {
+    border-color: #ecf0f1;
+    background: rgba(52, 73, 94, 0.95);
+    box-shadow: 0 0 15px rgba(236, 240, 241, 0.3), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-container input:hover {
+    border-color: #bdc3c7;
+    background: rgba(52, 73, 94, 0.95);
+}
+
+.login-container input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(145deg, #34495e, #2c3e50, #34495e);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-container button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    animation: buttonShine 5s linear infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes buttonShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(360deg);
+    }
+}
+
+.login-container button:hover {
+    background: linear-gradient(145deg, #3d566e, #34495e, #3d566e);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-container button:hover::before {
+    animation: buttonShine 2s linear infinite;
+}
+
+.login-container button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.error {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    border-left: 4px solid #e74c3c;
+    text-align: left;
+    animation: shake 0.5s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Estilo para el placeholder del error */
+.error:empty {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+    
+    .login-container h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Efecto de carga para el botón */
+.login-container button.loading {
+    background: linear-gradient(145deg, #2c3e50, #34495e, #2c3e50);
+    pointer-events: none;
+    opacity: 0.9;
+    position: relative;
+}
+
+.login-container button.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ecf0f1;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Estilo para mensaje de éxito */
+.success {
+    background: rgba(39, 174, 96, 0.2);
+    color: #27ae60;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    border-left: 4px solid #27ae60;
+    text-align: left;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enlace de olvidé contraseña */
+.forgot-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.forgot-link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.forgot-link a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #ecf0f1, transparent);
+    transition: width 0.3s ease;
+}
+
+.forgot-link a:hover {
+    color: #ecf0f1;
+}
+
+.forgot-link a:hover::after {
+    width: 100%;
+}
